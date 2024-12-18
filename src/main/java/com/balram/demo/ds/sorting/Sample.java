@@ -1,4 +1,4 @@
-package com.balram.demo.java8;
+package com.balram.demo.ds.sorting;
 
 import java.util.Arrays;
 
