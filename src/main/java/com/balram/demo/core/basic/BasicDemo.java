@@ -1,4 +1,4 @@
-package com.balram.demo.basic;
+package com.balram.demo.core.basic;
 
 public class BasicDemo {
 
@@ -6,9 +6,9 @@ public class BasicDemo {
         int i = 10;
         int j = 20;
 
-//        i = i + j;
-//        j = i - j;
-//        i = i - j;
+        i = i + j;
+        j = i - j;
+        i = i - j;
 
         System.out.println(i + " "+ j);
     }

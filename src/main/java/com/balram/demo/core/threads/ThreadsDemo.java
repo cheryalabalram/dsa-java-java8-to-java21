@@ -1,4 +1,4 @@
-package com.balram.demo.threads;
+package com.balram.demo.core.threads;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -20,7 +20,9 @@ public class ThreadsDemo {
             return print("Result from supplyAsync()");
         });
 
-        // Accessing the result from supplyAsync()
+        // future1.join() ensures that the first CompletableFuture (future1) completes before proceeding to the next line.
+        // After future1 completes, future2.join() is called, which blocks until future2 completes. Therefore,
+        // future1 completes first, followed by future2
         future1.join();
         String result = future2.join(); // Blocks until the future completes
         System.out.println(result);

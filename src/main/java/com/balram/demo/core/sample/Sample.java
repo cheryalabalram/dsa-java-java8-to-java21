@@ -1,4 +1,4 @@
-package com.balram.demo.sample;
+package com.balram.demo.core.sample;
 
 import java.util.HashMap;
 import java.util.Objects;

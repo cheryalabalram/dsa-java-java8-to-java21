@@ -39,12 +39,12 @@ public class EmpMain {
         System.out.println("average" + limit);
 
         System.out.println("*****************************");
-        double sum = employees
+        OptionalDouble average = employees
                 .stream()
                 .mapToDouble(Employee::getSalary)
-                .sum();
+                .average();
 
-        System.out.println("sum " +sum);
+        System.out.println("average " +average);
 
         System.out.println("*****************************");
         List<List<Employee>> list = List.of(employees);
@@ -56,11 +56,14 @@ public class EmpMain {
         System.out.println("*****************************");
         System.out.println("sort by employee name and employee salary desc");
 
+        Comparator<Employee> cmprtr = (e1, e2) -> e1.getName().compareTo(e2.getName());
+
         Stream<Employee> sorted = employees
                 .stream()
-                .sorted(Comparator.comparing(Employee::getName)
+                .sorted(cmprtr.reversed()
+//                .sorted(Comparator.comparing(Employee::getName)
 //                        .thenComparingDouble(Employee::getSalary)
-                        .reversed()
+//                        .reversed()
                 );
         sorted
                 .forEach(e -> System.out.println(e.getName() + " "+e.getSalary()));
