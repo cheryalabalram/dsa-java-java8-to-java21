@@ -12,6 +12,10 @@ public class Stack {
     }
 
     public void push(int value){
+        if(top + 1 == capacity){
+            System.out.println("Stack is full");
+            return;
+        }
         arr[++top] = value;
     }
 

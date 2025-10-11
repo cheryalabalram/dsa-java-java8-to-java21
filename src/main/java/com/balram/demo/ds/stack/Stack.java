@@ -5,8 +5,8 @@ public class Stack {
     private int top;
 
 
-    public Stack(int top){
-        this.stack = new int[top];
+    public Stack(int size){
+        this.stack = new int[size];
         this.top = -1;
     }
 

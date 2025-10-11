@@ -66,6 +66,7 @@ public class Sample {
 
         System.out.println("sortArrNbrs");
         sortArrNbrs(new int[]{2, 0, 2, 1, 1, 0});
+        runVirtualThreadExample();
     }
 
     private static void sortArrNbrs(int[] ints) {
@@ -95,8 +96,8 @@ public class Sample {
 
     private static void appertainingOneTime(int[] arr) {
         HashMap<Integer, Integer> m = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            m.put(arr[i], m.getOrDefault(arr[i], 0) + 1);
+        for (int i : arr) {
+            m.put(i, m.getOrDefault(i,0) + 1);
         }
 
         m.forEach((key, value) -> {
@@ -105,4 +106,12 @@ public class Sample {
             }
         });
     }
+
+    // Example of using a virtual thread (Java 21+)
+    private static void runVirtualThreadExample() {
+        Thread.startVirtualThread(() -> {
+            System.out.println("Running in a virtual thread: " + Thread.currentThread());
+        });
+    }
 }
+

@@ -1,9 +1,8 @@
 package com.balram.demo.java8;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class EmpMain {
@@ -32,13 +31,6 @@ public class EmpMain {
         ha.forEach(e -> System.out.println("Start With with using Filter - " +e));
         System.out.println("*****************************");
 
-        OptionalDouble limit = employees
-                .stream()
-                .mapToDouble(Employee::getSalary)
-                .average();
-        System.out.println("average" + limit);
-
-        System.out.println("*****************************");
         OptionalDouble average = employees
                 .stream()
                 .mapToDouble(Employee::getSalary)
@@ -53,6 +45,7 @@ public class EmpMain {
                 .flatMap(Collection::stream)
                 .toList();
         list1.forEach(e -> System.out.println(e.getName()));
+
         System.out.println("*****************************");
         System.out.println("sort by employee name and employee salary desc");
 
@@ -60,14 +53,22 @@ public class EmpMain {
 
         Stream<Employee> sorted = employees
                 .stream()
-                .sorted(cmprtr.reversed()
-//                .sorted(Comparator.comparing(Employee::getName)
-//                        .thenComparingDouble(Employee::getSalary)
-//                        .reversed()
-                );
-        sorted
-                .forEach(e -> System.out.println(e.getName() + " "+e.getSalary()));
+//                .sorted(cmprtr.reversed()
+                .sorted(Comparator.comparing(Employee::getName)
+                        .thenComparingDouble(Employee::getSalary)
+                        .reversed()
+                )
+//                ;
+        .sorted(Comparator.comparing(Employee::getName).thenComparingDouble(Employee::getSalary).reversed());
+
+        sorted.forEach(e -> System.out.println(e.getName() + " "+e.getSalary()));
         System.out.println("*****************************");
+
+        employees
+                .stream()
+                .collect(Collectors.groupingBy(Employee::getName))
+                .entrySet()
+                .forEach(e -> System.out.println(e.getKey() + " : "+ e.getValue()));
     }
 
 
